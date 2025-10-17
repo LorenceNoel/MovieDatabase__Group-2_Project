@@ -8,10 +8,14 @@ namespace Movie_Database_Application
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+
+            using (var loginForm = new LoginForm())
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    var currentUser = loginForm.CurrentUser;
+                    Application.Run(new Form1(currentUser));
+                }
+            }
         }
-    }
-}
