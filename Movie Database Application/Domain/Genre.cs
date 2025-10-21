@@ -8,11 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Movie_Database_Application
+
+//Genre metadata for filtering and groupings etc.
+
+namespace Movie_Database_Application.Domain
 {
-    public partial class LoginForm : Form
+    public partial class Genre : Form
     {
-        public LoginForm()
+        public Genre()
         {
             InitializeComponent();
         }

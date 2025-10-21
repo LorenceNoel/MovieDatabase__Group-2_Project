@@ -1,6 +1,6 @@
-﻿namespace Movie_Database_Application
+﻿namespace Movie_Database_Application.Domain
 {
-    partial class LoginForm
+    partial class MovieList
     {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "LoginForm";
+            this.Text = "MovieList";
         }
 
         #endregion

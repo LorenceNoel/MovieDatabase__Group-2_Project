@@ -3,12 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\domain\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\domain\\genre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\movie database application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\movie database application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|c:\\users\\gonza\\onedrive\\documents\\fall2025\\moviedatabase__group-2_project\\movie database application\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\movie database application\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{96DADD88-197F-4326-8ECD-72E5FB612D08}|Movie Database Application\\Movie Database Application.csproj|solutionrelative:movie database application\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,28 +47,88 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Movie Database Application",
-              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Movie Database Application.csproj",
-              "RelativeDocumentMoniker": "Movie Database Application\\Movie Database Application.csproj",
-              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Movie Database Application.csproj",
-              "RelativeToolTip": "Movie Database Application\\Movie Database Application.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-10-17T21:02:11.924Z",
-              "EditorCaption": ""
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "Movie Database Application\\Forms\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T05:24:44.67Z",
+              "EditorCaption": " [Design]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Form1.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Form1.Designer.cs",
-              "RelativeDocumentMoniker": "Movie Database Application\\Form1.Designer.cs",
-              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Form1.Designer.cs",
-              "RelativeToolTip": "Movie Database Application\\Form1.Designer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Forms\\LoginForm.Designer.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.Designer.cs",
+              "RelativeToolTip": "Movie Database Application\\Forms\\LoginForm.Designer.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAAAGEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-17T21:01:56.174Z",
+              "WhenOpened": "2025-10-21T05:17:11.417Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginForm.cs",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Forms\\LoginForm.cs",
+              "RelativeToolTip": "Movie Database Application\\Forms\\LoginForm.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T04:57:39.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Genre.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Domain\\Genre.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Domain\\Genre.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Domain\\Genre.cs [Design]",
+              "RelativeToolTip": "Movie Database Application\\Domain\\Genre.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-21T04:55:15.746Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Program.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Program.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Program.cs",
+              "RelativeToolTip": "Movie Database Application\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T23:18:19.864Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Form1.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Form1.cs",
+              "RelativeDocumentMoniker": "Movie Database Application\\Form1.cs",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Form1.cs [Design]",
+              "RelativeToolTip": "Movie Database Application\\Form1.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T23:18:13.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Movie Database Application.csproj",
+              "DocumentMoniker": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Movie Database Application.csproj",
+              "RelativeDocumentMoniker": "Movie Database Application\\Movie Database Application.csproj",
+              "ToolTip": "C:\\Users\\gonza\\OneDrive\\Documents\\FALL2025\\MovieDatabase__Group-2_Project\\Movie Database Application\\Movie Database Application.csproj",
+              "RelativeToolTip": "Movie Database Application\\Movie Database Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-10-17T21:02:11.924Z"
             }
           ]
         }

@@ -1,5 +1,8 @@
 namespace Movie_Database_Application
 {
+
+    //Launches LoginForm, then MainForm after login
+
     internal static class Program
     {
         /// <summary>
