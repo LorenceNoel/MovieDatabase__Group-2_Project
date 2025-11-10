@@ -1,22 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-//Manages “Favorites”, “Watch Later”, etc.
+﻿using System.Collections.Generic;
 
 namespace Movie_Database_Application.Domain
 {
-    public partial class MovieList : Form
+    public class MovieList
     {
-        public MovieList()
-        {
-            InitializeComponent();
-        }
+        public string Name { get; set; }
+        public List<Movie> Movies { get; set; } = new List<Movie>();
     }
 }

@@ -1,0 +1,19 @@
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.LoginForm.resources
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.MovieForm.resources
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.GenerateResource.cache
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.AssemblyInfoInputs.cache
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.AssemblyInfo.cs
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.CoreCompileInputs.cache
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.sourcelink.json
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.exe
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.deps.json
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.runtimeconfig.json
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.dll
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.pdb
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.dll
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\refint\Movie Database Application.dll
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.pdb
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.genruntimeconfig.cache
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\ref\Movie Database Application.dll
+C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.MainForm.resources

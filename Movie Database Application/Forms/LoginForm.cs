@@ -1,26 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using Movie_Database_Application.Managers;
-
-//Handles user login and registration UI
-
 
 namespace Movie_Database_Application.Forms
 {
     public partial class LoginForm : Form
     {
-        public User CurrentUser { get; private set; }
+        public bool IsAdmin { get; private set; }
+
+        private readonly string userFile = "users.csv";
 
         public LoginForm()
         {
             InitializeComponent();
+            if (!File.Exists(userFile))
+                File.WriteAllText(userFile, "admin,admin,true\n"); // default admin
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -28,22 +23,21 @@ namespace Movie_Database_Application.Forms
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            var lines = File.ReadAllLines(userFile);
+            var match = lines.FirstOrDefault(line =>
             {
-                MessageBox.Show("Please enter both username and password.");
-                return;
-            }
+                var parts = line.Split(',');
+                return parts[0] == username && parts[1] == password;
+            });
 
-            var user = UserManager.Authenticate(username, password);
-            if (user != null)
+            if (match != null)
             {
-                CurrentUser = user;
+                IsAdmin = match.Split(',')[2].ToLower() == "true";
                 DialogResult = DialogResult.OK;
-                Close();
             }
             else
             {
-                MessageBox.Show("Invalid username or password.");
+                MessageBox.Show("Invalid username or password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -52,14 +46,21 @@ namespace Movie_Database_Application.Forms
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text;
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
             {
-                MessageBox.Show("Please enter both username and password.");
+                MessageBox.Show("Username and password cannot be empty.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            bool success = UserManager.Register(username, password);
-            MessageBox.Show(success ? "Registration successful!" : "Username already exists.");
+            var lines = File.ReadAllLines(userFile);
+            if (lines.Any(line => line.Split(',')[0] == username))
+            {
+                MessageBox.Show("Username already exists.", "Registration Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            File.AppendAllText(userFile, $"{username},{password},false\n");
+            MessageBox.Show("Registration successful! You can now log in.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
