@@ -15,8 +15,10 @@ namespace Movie_Database_Application
             {
                 if (loginForm.ShowDialog() == DialogResult.OK)
                 {
+                    string username = loginForm.Username;
                     bool isAdmin = loginForm.IsAdmin;
-                    Application.Run(new MainForm(isAdmin));
+
+                    Application.Run(new UserProfileForm(username, isAdmin));
                 }
             }
         }

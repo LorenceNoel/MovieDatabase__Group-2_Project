@@ -10,23 +10,26 @@ namespace Movie_Database_Application.Forms
     public partial class MainForm : Form
     {
         private List<Movie> allMovies = new List<Movie>();
-        private bool isAdmin;
+        private readonly string currentUser;
+        private readonly bool isAdmin;
 
-        public MainForm(bool isAdminMode = false)
+        public MainForm(string username, bool isAdminMode)
         {
             InitializeComponent();
+            currentUser = username;
             isAdmin = isAdminMode;
-            UpdateListView(allMovies);
+            LoadFromCsv("movies.csv");
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var form = new MovieForm(isAdmin);
+            var form = new MovieForm(isAdmin, currentUser);
             form.ShowDialog();
-            var movie = form.GetSavedMovie();
+            var movie = form.GetSavedMovie(); 
             if (movie != null)
             {
                 allMovies.Add(movie);
+                SaveToCsv("movies.csv");
                 UpdateListView(allMovies);
             }
         }
@@ -36,7 +39,7 @@ namespace Movie_Database_Application.Forms
             if (lvMovies.SelectedItems.Count == 0) return;
             var index = lvMovies.SelectedItems[0].Index;
             var movie = allMovies[index];
-            var form = new MovieForm(false);
+            var form = new MovieForm(false, currentUser);
             form.LoadMovie(movie);
             form.ShowDialog();
         }
@@ -47,58 +50,53 @@ namespace Movie_Database_Application.Forms
             var filtered = allMovies.Where(m =>
                 m.Title.ToLower().Contains(query) ||
                 m.Genre.ToLower().Contains(query) ||
-                m.Year.ToString().Contains(query)).ToList();
+                m.Year.ToString().Contains(query) ||
+                m.Category.ToLower().Contains(query))
+                .OrderBy(m => m.Title)
+                .ToList();
 
             UpdateListView(filtered);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
-        {
-            SaveToCsv("movies.csv");
-            MessageBox.Show("List saved to movies.csv");
-        }
-
-        private void btnLoad_Click(object sender, EventArgs e)
-        {
-            LoadFromCsv("movies.csv");
-        }
 
         private void SaveToCsv(string path)
         {
-            var lines = allMovies.Select(m =>
-                $"{Escape(m.Title)},{Escape(m.Genre)},{m.Year},{m.Rating},{Escape(m.Synopsis)}");
-            File.WriteAllLines(path, lines);
+            var lines = File.Exists(path) ? File.ReadAllLines(path).ToList() : new List<string>();
+            var others = lines.Where(line => !line.EndsWith($",{currentUser}")).ToList();
+
+            var userLines = allMovies.Select(m =>
+                $"{Escape(m.Title)},{Escape(m.Genre)},{m.Year},{m.Rating},{Escape(m.Synopsis)},{Escape(m.Username)},{Escape(m.Category)}");
+
+            File.WriteAllLines(path, others.Concat(userLines));
         }
 
         private void LoadFromCsv(string path)
         {
-            if (!File.Exists(path))
-            {
-                MessageBox.Show("CSV file not found.");
-                return;
-            }
+            if (!File.Exists(path)) return;
 
-            var lines = File.ReadAllLines(path);
-            allMovies = lines.Select(line =>
-            {
-                var parts = ParseCsvLine(line);
-                return new Movie
+            allMovies = File.ReadAllLines(path)
+                .Select(line =>
                 {
-                    Title = parts[0],
-                    Genre = parts[1],
-                    Year = int.TryParse(parts[2], out int y) ? y : 0,
-                    Rating = int.TryParse(parts[3], out int r) ? r : 0,
-                    Synopsis = parts[4]
-                };
-            }).ToList();
+                    var parts = line.Split(',');
+                    if (parts.Length < 7) return null;
+                    return new Movie
+                    {
+                        Title = parts[0],
+                        Genre = parts[1],
+                        Year = int.TryParse(parts[2], out int y) ? y : 0,
+                        Rating = int.TryParse(parts[3], out int r) ? r : 0,
+                        Synopsis = parts[4],
+                        Category = parts[5],
+                        Username = parts[6]
+                    };
+                })
+                .Where(m => m != null)
+                .OrderBy(m => m.Title)
+                .ToList();
 
             UpdateListView(allMovies);
         }
-
-        private string Escape(string input)
-        {
-            return input.Contains(",") ? $"\"{input}\"" : input;
-        }
+        private string Escape(string input) => input.Contains(",") ? $"\"{input}\"" : input;
 
         private string[] ParseCsvLine(string line)
         {
@@ -122,11 +120,13 @@ namespace Movie_Database_Application.Forms
             lvMovies.Items.Clear();
             foreach (var movie in movies)
             {
-                var item = new ListViewItem(new[] {
+                var item = new ListViewItem(new[]
+                {
                     movie.Title,
                     movie.Genre,
                     movie.Year.ToString(),
-                    movie.Rating.ToString()
+                    movie.Rating.ToString(),
+                    movie.Category
                 });
                 lvMovies.Items.Add(item);
             }

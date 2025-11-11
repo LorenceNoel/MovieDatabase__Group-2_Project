@@ -8,13 +8,14 @@
         private System.Windows.Forms.Label lblYear;
         private System.Windows.Forms.Label lblRating;
         private System.Windows.Forms.Label lblSynopsis;
+        private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.TextBox txtTitle;
-        private System.Windows.Forms.TextBox txtGenre;
+        private System.Windows.Forms.ComboBox cmbGenre;
         private System.Windows.Forms.TextBox txtYear;
         private System.Windows.Forms.TextBox txtRating;
         private System.Windows.Forms.TextBox txtSynopsis;
+        private System.Windows.Forms.ComboBox cmbCategory;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button btnCancel;
 
         protected override void Dispose(bool disposing)
         {
@@ -30,104 +31,129 @@
             this.lblYear = new System.Windows.Forms.Label();
             this.lblRating = new System.Windows.Forms.Label();
             this.lblSynopsis = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
-            this.txtGenre = new System.Windows.Forms.TextBox();
+            this.cmbGenre = new System.Windows.Forms.ComboBox();
             this.txtYear = new System.Windows.Forms.TextBox();
             this.txtRating = new System.Windows.Forms.TextBox();
             this.txtSynopsis = new System.Windows.Forms.TextBox();
+            this.cmbCategory = new System.Windows.Forms.ComboBox();
             this.btnSave = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
 
-            this.ClientSize = new System.Drawing.Size(600, 500);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#d8d9d7");
+            this.ClientSize = new System.Drawing.Size(520, 520);
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Movie Details";
+            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f2");
+            this.Font = new System.Drawing.Font("Segoe UI", 10F);
 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblTitle.Location = new System.Drawing.Point(40, 70);
+            int labelX = 30;
+            int inputX = 130;
+            int y = 30;
+            int spacing = 40;
+
             this.lblTitle.Text = "Title:";
+            this.lblTitle.Location = new System.Drawing.Point(labelX, y);
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            y += spacing;
 
-            this.txtTitle.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtTitle.Location = new System.Drawing.Point(100, 70);
-            this.txtTitle.Size = new System.Drawing.Size(480, 27);
-            this.txtTitle.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
-
-            this.lblGenre.AutoSize = true;
-            this.lblGenre.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblGenre.Location = new System.Drawing.Point(40, 110);
             this.lblGenre.Text = "Genre:";
+            this.lblGenre.Location = new System.Drawing.Point(labelX, y);
+            this.lblGenre.AutoSize = true;
+            y += spacing;
 
-            this.txtGenre.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtGenre.Location = new System.Drawing.Point(100, 110);
-            this.txtGenre.Size = new System.Drawing.Size(150, 27);
-            this.txtGenre.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
-
-            this.lblYear.AutoSize = true;
-            this.lblYear.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblYear.Location = new System.Drawing.Point(270, 110);
             this.lblYear.Text = "Year:";
+            this.lblYear.Location = new System.Drawing.Point(labelX, y);
+            this.lblYear.AutoSize = true;
+            y += spacing;
 
-            this.txtYear.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtYear.Location = new System.Drawing.Point(320, 110);
-            this.txtYear.Size = new System.Drawing.Size(80, 27);
-            this.txtYear.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
-
+            this.lblRating.Text = "Rating:";
+            this.lblRating.Location = new System.Drawing.Point(labelX, y);
             this.lblRating.AutoSize = true;
-            this.lblRating.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblRating.Location = new System.Drawing.Point(420, 110);
-            this.lblRating.Text = "Rating (%):";
+            y += spacing;
 
-            this.txtRating.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtRating.Location = new System.Drawing.Point(510, 110);
-            this.txtRating.Size = new System.Drawing.Size(70, 27);
-            this.txtRating.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
-
-            this.lblSynopsis.AutoSize = true;
-            this.lblSynopsis.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.lblSynopsis.Location = new System.Drawing.Point(40, 160);
             this.lblSynopsis.Text = "Synopsis:";
+            this.lblSynopsis.Location = new System.Drawing.Point(labelX, y);
+            this.lblSynopsis.AutoSize = true;
+            y += spacing;
 
-            this.txtSynopsis.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSynopsis.Location = new System.Drawing.Point(40, 190);
+            this.lblCategory.Text = "Category:";
+            this.lblCategory.Location = new System.Drawing.Point(labelX, y + 120);
+            this.lblCategory.AutoSize = true;
+
+            y = 30;
+            this.txtTitle.Location = new System.Drawing.Point(inputX, y);
+            this.txtTitle.Size = new System.Drawing.Size(330, 27);
+            this.txtTitle.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.txtTitle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            y += spacing;
+
+            this.cmbGenre.Location = new System.Drawing.Point(inputX, y);
+            this.cmbGenre.Size = new System.Drawing.Size(330, 27);
+            this.cmbGenre.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbGenre.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.cmbGenre.FlatStyle = FlatStyle.Flat;
+            this.cmbGenre.Items.AddRange(new[] {
+                "Action", "Adventure", "Animation", "Comedy", "Crime",
+                "Documentary", "Drama", "Fantasy", "Historical", "Horror",
+                "Musical", "Mystery", "Romance", "Sci-Fi", "Thriller", "Western"
+            });
+            this.cmbGenre.SelectedIndex = 0;
+            y += spacing;
+
+            this.txtYear.Location = new System.Drawing.Point(inputX, y);
+            this.txtYear.Size = new System.Drawing.Size(100, 27);
+            this.txtYear.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.txtYear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            y += spacing;
+
+            this.txtRating.Location = new System.Drawing.Point(inputX, y);
+            this.txtRating.Size = new System.Drawing.Size(100, 27);
+            this.txtRating.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.txtRating.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            y += spacing;
+
+            this.txtSynopsis.Location = new System.Drawing.Point(inputX, y);
+            this.txtSynopsis.Size = new System.Drawing.Size(330, 110);
             this.txtSynopsis.Multiline = true;
-            this.txtSynopsis.Size = new System.Drawing.Size(540, 180);
-            this.txtSynopsis.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtSynopsis.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.txtSynopsis.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
 
-            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnSave.Location = new System.Drawing.Point(400, 400);
-            this.btnSave.Size = new System.Drawing.Size(90, 35);
+            this.cmbCategory.Location = new System.Drawing.Point(inputX, y + 120);
+            this.cmbCategory.Size = new System.Drawing.Size(200, 27);
+            this.cmbCategory.DropDownStyle = ComboBoxStyle.DropDownList;
+            this.cmbCategory.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
+            this.cmbCategory.FlatStyle = FlatStyle.Flat;
+            this.cmbCategory.Items.AddRange(new[] {
+                "Top Picks", "Watch Later", "Favorites", "Hidden Gems"
+            });
+            this.cmbCategory.SelectedIndex = 0;
+
+            this.btnSave.Location = new System.Drawing.Point(inputX, y + 180);
+            this.btnSave.Size = new System.Drawing.Size(120, 40);
             this.btnSave.Text = "Save";
+            this.btnSave.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
             this.btnSave.BackColor = System.Drawing.ColorTranslator.FromHtml("#9a9360");
             this.btnSave.ForeColor = System.Drawing.Color.White;
+            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 
-            this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnCancel.Location = new System.Drawing.Point(490, 400);
-            this.btnCancel.Size = new System.Drawing.Size(90, 35);
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.BackColor = System.Drawing.ColorTranslator.FromHtml("#9a9360");
-            this.btnCancel.ForeColor = System.Drawing.Color.White;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.txtTitle);
             this.Controls.Add(this.lblGenre);
-            this.Controls.Add(this.txtGenre);
             this.Controls.Add(this.lblYear);
-            this.Controls.Add(this.txtYear);
             this.Controls.Add(this.lblRating);
-            this.Controls.Add(this.txtRating);
             this.Controls.Add(this.lblSynopsis);
+            this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.txtTitle);
+            this.Controls.Add(this.cmbGenre);
+            this.Controls.Add(this.txtYear);
+            this.Controls.Add(this.txtRating);
             this.Controls.Add(this.txtSynopsis);
+            this.Controls.Add(this.cmbCategory);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.btnCancel);
-
             this.ResumeLayout(false);
             this.PerformLayout();
         }
     }
 }
-
