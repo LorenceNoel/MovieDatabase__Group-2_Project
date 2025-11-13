@@ -70,7 +70,7 @@ namespace Movie_Database_Application.Forms
             }
 
             string newLine = $"{title},{genre},{year},{rating},{synopsis},{category},{username}";
-            string moviePath = @"C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\movies.csv";
+            string moviePath = Path.Combine(Application.StartupPath, "movies.csv");
             File.AppendAllText(moviePath, newLine + Environment.NewLine);
             MessageBox.Show("Movie added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();

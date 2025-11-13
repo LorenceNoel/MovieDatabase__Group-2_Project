@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using Movie_Database_Application.Domain;
+﻿using Movie_Database_Application.Domain;
 
 namespace Movie_Database_Application.Forms
 {
