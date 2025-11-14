@@ -7,10 +7,10 @@ namespace Movie_Database_Application.Forms
 {
     public partial class MovieForm : Form
     {
-        private readonly int userId;                 // logged-in user ID
-        private readonly string connectionString;    // your SQL connection
-        private readonly int? movieId;               // null = add, not null = edit
-        private Movie savedMovie;                    // the saved movie to return
+        private readonly int userId;                
+        private readonly string connectionString;    
+        private readonly int? movieId;              
+        private Movie savedMovie;                    
 
         public MovieForm(int userId, string connectionString, int? movieId = null)
         {
