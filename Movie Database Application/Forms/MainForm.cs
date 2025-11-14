@@ -164,7 +164,7 @@ namespace Movie_Database_Application.Forms
                     movie.Rating.ToString(),
                     movie.Category
                 });
-                item.Tag = movie; // store reference for safe access
+                item.Tag = movie; 
                 lvMovies.Items.Add(item);
             }
         }
@@ -190,3 +190,4 @@ namespace Movie_Database_Application.Forms
         }
     }
 }
+
