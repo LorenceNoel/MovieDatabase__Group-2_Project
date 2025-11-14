@@ -19,3 +19,32 @@ C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie 
 C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.pdb
 C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.genruntimeconfig.cache
 C:\Users\gonza\OneDrive\Documents\FALL2025\MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\ref\Movie Database Application.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.exe
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.deps.json
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.runtimeconfig.json
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Movie Database Application.pdb
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\System.Data.SqlClient.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.AssemblyReference.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.LoginForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.MainForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.MovieDetailsForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.MovieForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.Forms.UserProfileForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.GenerateResource.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.AssemblyInfoInputs.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.AssemblyInfo.cs
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.CoreCompileInputs.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.sourcelink.json
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Da.008C4D66.Up2Date
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\refint\Movie Database Application.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.pdb
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.genruntimeconfig.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\ref\Movie Database Application.dll
