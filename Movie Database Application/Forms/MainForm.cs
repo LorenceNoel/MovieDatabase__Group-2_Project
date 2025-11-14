@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using Movie_Database_Application.Domain;
@@ -12,107 +12,79 @@ namespace Movie_Database_Application.Forms
         private List<Movie> allMovies = new List<Movie>();
         private readonly string currentUser;
         private readonly bool isAdmin;
+        private readonly int userId;
+        private readonly string connectionString = @"Server=Makku\SQLEXPRESS;Database=MovieDatabase;Trusted_Connection=True;";
 
-        public MainForm(string username, bool isAdminMode)
+        public MainForm(string username, bool isAdminMode, int userId)
         {
             InitializeComponent();
+
             currentUser = username;
             isAdmin = isAdminMode;
-            LoadFromCsv("movies.csv");
+            this.userId = userId;
+
+            InitializeListView();
+            LoadFromDatabase();
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private void InitializeListView()
         {
-            var form = new MovieForm(isAdmin, currentUser);
-            form.ShowDialog();
-            var movie = form.GetSavedMovie(); 
-            if (movie != null)
+            lvMovies.View = View.Details;
+            lvMovies.FullRowSelect = true;
+            lvMovies.Columns.Clear();
+            lvMovies.Columns.Add("Title", 200);
+            lvMovies.Columns.Add("Genre", 100);
+            lvMovies.Columns.Add("Year", 70);
+            lvMovies.Columns.Add("Rating", 70);
+            lvMovies.Columns.Add("Category", 100);
+            lvMovies.Columns.Add("Added By", 120);
+        }
+
+        private void LoadFromDatabase()
+        {
+            allMovies.Clear();
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                allMovies.Add(movie);
-                SaveToCsv("movies.csv");
-                UpdateListView(allMovies);
-            }
-        }
+                conn.Open();
 
-        private void btnView_Click(object sender, EventArgs e)
-        {
-            if (lvMovies.SelectedItems.Count == 0) return;
-            var index = lvMovies.SelectedItems[0].Index;
-            var movie = allMovies[index];
-            var form = new MovieForm(false, currentUser);
-            form.LoadMovie(movie);
-            form.ShowDialog();
-        }
+                string query = isAdmin
+                    ? @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, m.UserID
+                        FROM Movies m
+                        JOIN Users u ON m.UserID = u.UserID"
+                    : @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, m.UserID
+                        FROM Movies m
+                        JOIN Users u ON m.UserID = u.UserID
+                        WHERE m.UserID=@userId";
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
-        {
-            string query = txtSearch.Text.ToLower();
-            var filtered = allMovies.Where(m =>
-                m.Title.ToLower().Contains(query) ||
-                m.Genre.ToLower().Contains(query) ||
-                m.Year.ToString().Contains(query) ||
-                m.Category.ToLower().Contains(query))
-                .OrderBy(m => m.Title)
-                .ToList();
-
-            UpdateListView(filtered);
-        }
-
-
-        private void SaveToCsv(string path)
-        {
-            var lines = File.Exists(path) ? File.ReadAllLines(path).ToList() : new List<string>();
-            var others = lines.Where(line => !line.EndsWith($",{currentUser}")).ToList();
-
-            var userLines = allMovies.Select(m =>
-                $"{Escape(m.Title)},{Escape(m.Genre)},{m.Year},{m.Rating},{Escape(m.Synopsis)},{Escape(m.Username)},{Escape(m.Category)}");
-
-            File.WriteAllLines(path, others.Concat(userLines));
-        }
-
-        private void LoadFromCsv(string path)
-        {
-            if (!File.Exists(path)) return;
-
-            allMovies = File.ReadAllLines(path)
-                .Select(line =>
+                using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    var parts = line.Split(',');
-                    if (parts.Length < 7) return null;
-                    return new Movie
+                    if (!isAdmin)
+                        cmd.Parameters.AddWithValue("@userId", userId);
+
+                    using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        Title = parts[0],
-                        Genre = parts[1],
-                        Year = int.TryParse(parts[2], out int y) ? y : 0,
-                        Rating = int.TryParse(parts[3], out int r) ? r : 0,
-                        Synopsis = parts[4],
-                        Category = parts[5],
-                        Username = parts[6]
-                    };
-                })
-                .Where(m => m != null)
-                .OrderBy(m => m.Title)
-                .ToList();
-
-            UpdateListView(allMovies);
-        }
-        private string Escape(string input) => input.Contains(",") ? $"\"{input}\"" : input;
-
-        private string[] ParseCsvLine(string line)
-        {
-            var parts = new List<string>();
-            bool inQuotes = false;
-            string current = "";
-
-            foreach (char c in line)
-            {
-                if (c == '"' && !inQuotes) { inQuotes = true; continue; }
-                if (c == '"' && inQuotes) { inQuotes = false; continue; }
-                if (c == ',' && !inQuotes) { parts.Add(current); current = ""; continue; }
-                current += c;
+                        while (reader.Read())
+                        {
+                            allMovies.Add(new Movie
+                            {
+                                MovieID = Convert.ToInt32(reader["MovieID"]),
+                                Title = reader["Title"].ToString(),
+                                Genre = reader["Genre"].ToString(),
+                                Year = reader["Year"] != DBNull.Value ? (int?)Convert.ToInt32(reader["Year"]) : null,
+                                Rating = reader["Rating"] != DBNull.Value ? (int?)Convert.ToInt32(reader["Rating"]) : null,
+                                Category = reader["Category"].ToString(),
+                                Synopsis = reader["Synopsis"].ToString(),
+                                Username = reader["Username"].ToString(),
+                                UserID = Convert.ToInt32(reader["UserID"])
+                            });
+                        }
+                    }
+                }
             }
-            parts.Add(current);
-            return parts.ToArray();
+
+            allMovies = allMovies.OrderBy(m => m.Title).ToList();
+            UpdateListView(allMovies);
         }
 
         private void UpdateListView(List<Movie> movies)
@@ -124,12 +96,95 @@ namespace Movie_Database_Application.Forms
                 {
                     movie.Title,
                     movie.Genre,
-                    movie.Year.ToString(),
-                    movie.Rating.ToString(),
-                    movie.Category
+                    movie.Year?.ToString() ?? "",
+                    movie.Rating?.ToString() ?? "",
+                    movie.Category,
+                    movie.Username
                 });
+                item.Tag = movie;
                 lvMovies.Items.Add(item);
             }
+        }
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            string query = txtSearch.Text.Trim().ToLower();
+            var filtered = allMovies
+                .Where(m =>
+                    (m.Title?.ToLower().Contains(query) ?? false) ||
+                    (m.Genre?.ToLower().Contains(query) ?? false) ||
+                    m.Year?.ToString().Contains(query) == true ||
+                    (m.Category?.ToLower().Contains(query) ?? false))
+                .OrderBy(m => m.Title)
+                .ToList();
+
+            UpdateListView(filtered);
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            using var form = new MovieForm(userId, connectionString);
+            form.ShowDialog();
+
+            if (form.GetSavedMovie() != null)
+                LoadFromDatabase();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (lvMovies.SelectedItems.Count == 0) return;
+            if (lvMovies.SelectedItems[0].Tag is not Movie movie) return;
+
+            using var form = new MovieForm(userId, connectionString, movie.MovieID);
+            form.ShowDialog();
+
+            if (form.GetSavedMovie() != null)
+                LoadFromDatabase();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (lvMovies.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a movie to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (lvMovies.SelectedItems[0].Tag is not Movie movie) return;
+
+            var confirm = MessageBox.Show(
+                "Are you sure you want to delete this movie?",
+                "Confirm Delete",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question
+            );
+
+            if (confirm != DialogResult.Yes) return;
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "DELETE FROM Movies WHERE MovieID=@movieId AND (UserID=@userId OR @isAdmin=1)";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@movieId", movie.MovieID);
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    cmd.Parameters.AddWithValue("@isAdmin", isAdmin ? 1 : 0);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+
+            LoadFromDatabase();
+        }
+
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            if (lvMovies.SelectedItems.Count == 0) return;
+            if (lvMovies.SelectedItems[0].Tag is not Movie movie) return;
+
+            var detailsForm = new MovieDetailsForm(movie);
+            detailsForm.ShowDialog();
         }
     }
 }

@@ -18,68 +18,107 @@
 
         private void InitializeComponent()
         {
-            this.lvMovies = new System.Windows.Forms.ListView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnAdd = new System.Windows.Forms.Button();
-            this.btnView = new System.Windows.Forms.Button();
-            this.lblSearch = new System.Windows.Forms.Label();
-            this.SuspendLayout();
-
-            this.ClientSize = new System.Drawing.Size(900, 600);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "My Movies";
-            this.BackColor = System.Drawing.ColorTranslator.FromHtml("#f5f5f2");
-            this.Font = new System.Drawing.Font("Segoe UI", 10F);
-
-            this.lblSearch.AutoSize = true;
-            this.lblSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblSearch.Location = new System.Drawing.Point(30, 30);
-            this.lblSearch.Text = "Search:";
-
-            this.txtSearch.Location = new System.Drawing.Point(120, 28);
-            this.txtSearch.Size = new System.Drawing.Size(600, 32);
-            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 11F);
-            this.txtSearch.BackColor = System.Drawing.ColorTranslator.FromHtml("#faebd9");
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
-
-            this.lvMovies.Location = new System.Drawing.Point(30, 80);
-            this.lvMovies.Size = new System.Drawing.Size(840, 400);
-            this.lvMovies.View = System.Windows.Forms.View.Details;
-            this.lvMovies.FullRowSelect = true;
-            this.lvMovies.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.lvMovies.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lvMovies.Columns.Add("Title", 250);
-            this.lvMovies.Columns.Add("Genre", 150);
-            this.lvMovies.Columns.Add("Year", 100);
-            this.lvMovies.Columns.Add("Rating", 100);
-            this.lvMovies.Columns.Add("Category", 200);
-
-            this.btnAdd.Location = new System.Drawing.Point(30, 500);
-            this.btnAdd.Size = new System.Drawing.Size(180, 45);
-            this.btnAdd.Text = "➕ Add Movie";
-            this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnAdd.BackColor = System.Drawing.ColorTranslator.FromHtml("#9a9360");
-            this.btnAdd.ForeColor = System.Drawing.Color.White;
-            this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
-
-            this.btnView.Location = new System.Drawing.Point(230, 500);
-            this.btnView.Size = new System.Drawing.Size(180, 45);
-            this.btnView.Text = "👁️ View Details";
-            this.btnView.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnView.BackColor = System.Drawing.ColorTranslator.FromHtml("#9a9360");
-            this.btnView.ForeColor = System.Drawing.Color.White;
-            this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnView.Click += new System.EventHandler(this.btnView_Click);
-
-            this.Controls.Add(this.lblSearch);
-            this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.lvMovies);
-            this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.btnView);
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            lvMovies = new ListView();
+            txtSearch = new TextBox();
+            btnAdd = new Button();
+            btnView = new Button();
+            lblSearch = new Label();
+            btnDelete = new Button();
+            SuspendLayout();
+            // 
+            // lvMovies
+            // 
+            lvMovies.BorderStyle = BorderStyle.FixedSingle;
+            lvMovies.Font = new Font("Segoe UI", 10F);
+            lvMovies.FullRowSelect = true;
+            lvMovies.Location = new Point(30, 80);
+            lvMovies.Name = "lvMovies";
+            lvMovies.Size = new Size(840, 400);
+            lvMovies.TabIndex = 2;
+            lvMovies.UseCompatibleStateImageBehavior = false;
+            lvMovies.View = View.Details;
+            // 
+            // txtSearch
+            // 
+            txtSearch.BackColor = Color.FromArgb(250, 235, 217);
+            txtSearch.BorderStyle = BorderStyle.FixedSingle;
+            txtSearch.Font = new Font("Segoe UI", 11F);
+            txtSearch.Location = new Point(120, 28);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(600, 32);
+            txtSearch.TabIndex = 1;
+            txtSearch.TextChanged += txtSearch_TextChanged;
+            // 
+            // btnAdd
+            // 
+            btnAdd.BackColor = Color.FromArgb(154, 147, 96);
+            btnAdd.FlatStyle = FlatStyle.Flat;
+            btnAdd.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnAdd.ForeColor = Color.White;
+            btnAdd.Location = new Point(30, 500);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(180, 45);
+            btnAdd.TabIndex = 3;
+            btnAdd.Text = "➕ Add Movie";
+            btnAdd.UseVisualStyleBackColor = false;
+            btnAdd.Click += btnAdd_Click;
+            // 
+            // btnView
+            // 
+            btnView.BackColor = Color.FromArgb(154, 147, 96);
+            btnView.FlatStyle = FlatStyle.Flat;
+            btnView.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnView.ForeColor = Color.White;
+            btnView.Location = new Point(230, 500);
+            btnView.Name = "btnView";
+            btnView.Size = new Size(180, 45);
+            btnView.TabIndex = 4;
+            btnView.Text = "👁️ View Details";
+            btnView.UseVisualStyleBackColor = false;
+            btnView.Click += btnView_Click;
+            // 
+            // lblSearch
+            // 
+            lblSearch.AutoSize = true;
+            lblSearch.Font = new Font("Segoe UI", 12F, FontStyle.Bold);
+            lblSearch.Location = new Point(30, 30);
+            lblSearch.Name = "lblSearch";
+            lblSearch.Size = new Size(80, 28);
+            lblSearch.TabIndex = 0;
+            lblSearch.Text = "Search:";
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.FromArgb(154, 147, 96);
+            btnDelete.FlatStyle = FlatStyle.Flat;
+            btnDelete.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnDelete.ForeColor = Color.White;
+            btnDelete.Location = new Point(434, 500);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(180, 45);
+            btnDelete.TabIndex = 5;
+            btnDelete.Text = "🗑️ Delete";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += btnDelete_Click;
+            // 
+            // MainForm
+            // 
+            BackColor = Color.FromArgb(245, 245, 242);
+            ClientSize = new Size(900, 600);
+            Controls.Add(btnDelete);
+            Controls.Add(lblSearch);
+            Controls.Add(txtSearch);
+            Controls.Add(lvMovies);
+            Controls.Add(btnAdd);
+            Controls.Add(btnView);
+            Font = new Font("Segoe UI", 10F);
+            MaximizeBox = false;
+            Name = "MainForm";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "My Movies";
+            ResumeLayout(false);
+            PerformLayout();
         }
+        private Button btnDelete;
     }
 }

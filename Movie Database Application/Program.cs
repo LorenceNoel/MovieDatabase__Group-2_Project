@@ -17,8 +17,9 @@ namespace Movie_Database_Application
                 {
                     string username = loginForm.Username;
                     bool isAdmin = loginForm.IsAdmin;
+                    int userId = loginForm.UserID;
 
-                    Application.Run(new UserProfileForm(username, isAdmin));
+                    Application.Run(new UserProfileForm(username, isAdmin, userId));
                 }
             }
         }

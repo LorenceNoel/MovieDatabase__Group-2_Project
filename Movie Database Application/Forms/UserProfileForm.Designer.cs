@@ -7,6 +7,7 @@
         private System.Windows.Forms.ListView lvUserMovies;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Button btnView;
+        private System.Windows.Forms.Button btnLogout;
 
         protected override void Dispose(bool disposing)
         {
@@ -21,6 +22,7 @@
             this.lvUserMovies = new System.Windows.Forms.ListView();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnView = new System.Windows.Forms.Button();
+            this.btnLogout = new System.Windows.Forms.Button();
             this.SuspendLayout();
 
             this.ClientSize = new System.Drawing.Size(720, 520);
@@ -64,10 +66,21 @@
             this.btnView.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnView.Click += new System.EventHandler(this.btnView_Click);
 
+            // Logout button
+            this.btnLogout.Location = new System.Drawing.Point(390, 430);
+            this.btnLogout.Size = new System.Drawing.Size(160, 45);
+            this.btnLogout.Text = "Logout";
+            this.btnLogout.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
+            this.btnLogout.BackColor = System.Drawing.ColorTranslator.FromHtml("#c7533a");
+            this.btnLogout.ForeColor = System.Drawing.Color.White;
+            this.btnLogout.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
+
             this.Controls.Add(this.lblWelcome);
             this.Controls.Add(this.lvUserMovies);
             this.Controls.Add(this.btnBrowse);
             this.Controls.Add(this.btnView);
+            this.Controls.Add(this.btnLogout);
             this.ResumeLayout(false);
             this.PerformLayout();
         }

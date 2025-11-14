@@ -1,7 +1,8 @@
 ﻿using System;
-using System.IO;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 using Movie_Database_Application.Domain;
+using System.Linq;
 
 namespace Movie_Database_Application.Forms
 {
@@ -9,12 +10,15 @@ namespace Movie_Database_Application.Forms
     {
         private readonly string username;
         private readonly bool isAdmin;
+        private readonly int userId;
+        private readonly string connectionString = @"Server=Makku\SQLEXPRESS;Database=MovieDatabase;Trusted_Connection=True;";
 
-        public UserProfileForm(string username, bool isAdmin)
+        public UserProfileForm(string username, bool isAdmin, int userId)
         {
             InitializeComponent();
             this.username = username;
             this.isAdmin = isAdmin;
+            this.userId = userId;
             lblWelcome.Text = $"Welcome, {username}!";
             LoadUserMovies();
         }
@@ -22,27 +26,51 @@ namespace Movie_Database_Application.Forms
         private void LoadUserMovies()
         {
             lvUserMovies.Items.Clear();
-            if (!File.Exists("movies.csv")) return;
 
-            var lines = File.ReadAllLines("movies.csv")
-                .Select(line => line.Split(','))
-                .Where(parts => parts.Length >= 7 && parts[6] == username)
-                .OrderBy(parts => parts[0]);
-
-            foreach (var parts in lines)
+            using (SqlConnection conn = new SqlConnection(connectionString))
             {
-                var item = new ListViewItem(parts[0]); 
-                item.SubItems.Add(parts[1]); 
-                item.SubItems.Add(parts[2]); 
-                item.SubItems.Add(parts[3]);
-                item.SubItems.Add(parts[5]); 
-                lvUserMovies.Items.Add(item);
+                conn.Open();
+                string query = @"SELECT MovieID, Title, Genre, Year, Rating, Category, Synopsis
+                                 FROM Movies
+                                 WHERE UserID = @userId
+                                 ORDER BY Title";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userId", userId);
+                    using (SqlDataReader reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var movie = new Movie
+                            {
+                                MovieID = reader["MovieID"] != DBNull.Value ? Convert.ToInt32(reader["MovieID"]) : 0,
+                                Title = reader["Title"]?.ToString() ?? string.Empty,
+                                Genre = reader["Genre"]?.ToString() ?? string.Empty,
+                                Year = reader["Year"] != DBNull.Value ? (int?)Convert.ToInt32(reader["Year"]) : null,
+                                Rating = reader["Rating"] != DBNull.Value ? (int?)Convert.ToInt32(reader["Rating"]) : null,
+                                Category = reader["Category"]?.ToString() ?? string.Empty,
+                                Synopsis = reader["Synopsis"]?.ToString() ?? string.Empty,
+                                Username = username,
+                                UserID = userId
+                            };
+
+                            var item = new ListViewItem(movie.Title);
+                            item.SubItems.Add(movie.Genre);
+                            item.SubItems.Add(movie.Year?.ToString() ?? string.Empty);
+                            item.SubItems.Add(movie.Rating?.ToString() ?? string.Empty);
+                            item.SubItems.Add(movie.Category);
+                            item.Tag = movie;
+                            lvUserMovies.Items.Add(item);
+                        }
+                    }
+                }
             }
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            var form = new MainForm(username, isAdmin);
+            using var form = new MainForm(username, isAdmin, userId);
             form.ShowDialog();
             LoadUserMovies();
         }
@@ -50,21 +78,32 @@ namespace Movie_Database_Application.Forms
         private void btnView_Click(object sender, EventArgs e)
         {
             if (lvUserMovies.SelectedItems.Count == 0) return;
-            var selected = lvUserMovies.SelectedItems[0];
-            var movie = new Movie
-            {
-                Title = selected.Text,
-                Genre = selected.SubItems[1].Text,
-                Year = int.TryParse(selected.SubItems[2].Text, out int y) ? y : 0,
-                Rating = int.TryParse(selected.SubItems[3].Text, out int r) ? r : 0,
-                Category = selected.SubItems[4].Text,
-                Synopsis = "", 
-                Username = username 
-            };
+            if (lvUserMovies.SelectedItems[0].Tag is not Movie movie) return;
 
-            var form = new MovieForm(false, username); 
-            form.LoadMovie(movie);
+            var form = new MovieDetailsForm(movie);
             form.ShowDialog();
+        }
+
+        private void btnLogout_Click(object sender, EventArgs e)
+        {
+            // Hide current profile while showing login
+            this.Hide();
+            using (var loginForm = new LoginForm())
+            {
+                if (loginForm.ShowDialog() == DialogResult.OK)
+                {
+                    // Open a new UserProfileForm with the new credentials
+                    var newProfile = new UserProfileForm(loginForm.Username, loginForm.IsAdmin, loginForm.UserID);
+                    newProfile.Show();
+                    // Close the current instance
+                    this.Close();
+                }
+                else
+                {
+                    // If user cancelled login, close the application
+                    this.Close();
+                }
+            }
         }
 
     }
