@@ -30,9 +30,14 @@ namespace Movie_Database_Application.Forms
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
                 conn.Open();
-                string query = @"SELECT MovieID, Title, Genre, Year, Rating, Category, Synopsis
-                                 FROM Movies
-                                 WHERE UserID = @userId
+                string query = @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Category, m.Synopsis
+                                 FROM Movies m
+                                 WHERE m.UserID = @userId
+                                 UNION
+                                 SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Category, m.Synopsis
+                                 FROM UserWatchLater uwl
+                                 INNER JOIN Movies m ON uwl.MovieID = m.MovieID
+                                 WHERE uwl.UserID = @userId
                                  ORDER BY Title";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))

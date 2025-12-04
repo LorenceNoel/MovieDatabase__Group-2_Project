@@ -24,6 +24,7 @@
             btnView = new Button();
             lblSearch = new Label();
             btnDelete = new Button();
+            btnWatchLater = new Button();
             SuspendLayout();
             // 
             // lvMovies
@@ -101,10 +102,25 @@
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
             // 
+            // btnWatchLater
+            // 
+            btnWatchLater.BackColor = Color.FromArgb(154, 147, 96);
+            btnWatchLater.FlatStyle = FlatStyle.Flat;
+            btnWatchLater.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            btnWatchLater.ForeColor = Color.White;
+            btnWatchLater.Location = new Point(634, 500);
+            btnWatchLater.Name = "btnWatchLater";
+            btnWatchLater.Size = new Size(180, 45);
+            btnWatchLater.TabIndex = 6;
+            btnWatchLater.Text = "⏰ Watch Later";
+            btnWatchLater.UseVisualStyleBackColor = false;
+            btnWatchLater.Click += new System.EventHandler(this.btnWatchLater_Click);
+            // 
             // MainForm
             // 
             BackColor = Color.FromArgb(245, 245, 242);
             ClientSize = new Size(900, 600);
+            Controls.Add(btnWatchLater);
             Controls.Add(btnDelete);
             Controls.Add(lblSearch);
             Controls.Add(txtSearch);
@@ -120,5 +136,6 @@
             PerformLayout();
         }
         private Button btnDelete;
+        private Button btnWatchLater;
     }
 }

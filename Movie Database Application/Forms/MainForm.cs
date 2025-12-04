@@ -66,7 +66,6 @@ namespace Movie_Database_Application.Forms
             {
                 conn.Open();
 
-
                 string query = (isAdmin || browseAll)
                     ? @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, m.UserID
                         FROM Movies m
@@ -74,7 +73,13 @@ namespace Movie_Database_Application.Forms
                     : @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, m.UserID
                         FROM Movies m
                         JOIN Users u ON m.UserID = u.UserID
-                        WHERE m.UserID=@userId";
+                        WHERE m.UserID = @userId
+                        UNION
+                        SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, uwl.UserID
+                        FROM UserWatchLater uwl
+                        JOIN Movies m ON uwl.MovieID = m.MovieID
+                        JOIN Users u ON m.UserID = u.UserID
+                        WHERE uwl.UserID = @userId";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
@@ -85,7 +90,7 @@ namespace Movie_Database_Application.Forms
                     {
                         while (reader.Read())
                         {
-                            allMovies.Add(new Movie
+                            var movie = new Movie
                             {
                                 MovieID = Convert.ToInt32(reader["MovieID"]),
                                 Title = reader["Title"].ToString(),
@@ -96,11 +101,16 @@ namespace Movie_Database_Application.Forms
                                 Synopsis = reader["Synopsis"].ToString(),
                                 Username = reader["Username"].ToString(),
                                 UserID = Convert.ToInt32(reader["UserID"])
-                            });
+                            };
+
+                            allMovies.Add(movie);
                         }
                     }
                 }
             }
+
+            // Log the number of movies retrieved
+            Console.WriteLine($"Movies retrieved: {allMovies.Count}");
 
             allMovies = allMovies.OrderBy(m => m.Title).ToList();
             UpdateListView(allMovies);
@@ -204,6 +214,60 @@ namespace Movie_Database_Application.Forms
 
             var detailsForm = new MovieDetailsForm(movie);
             detailsForm.ShowDialog();
+        }
+
+        private void btnWatchLater_Click(object sender, EventArgs e)
+        {
+            if (lvMovies.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a movie to add to Watch Later.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (lvMovies.SelectedItems[0].Tag is not Movie movie)
+            {
+                MessageBox.Show("Invalid movie selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Check if the movie is already in the Watch Later list
+                string checkQuery = @"SELECT COUNT(*) FROM UserWatchLater WHERE UserID = @userId AND MovieID = @movieId";
+                using (SqlCommand checkCmd = new SqlCommand(checkQuery, conn))
+                {
+                    checkCmd.Parameters.AddWithValue("@userId", userId);
+                    checkCmd.Parameters.AddWithValue("@movieId", movie.MovieID);
+
+                    int count = (int)checkCmd.ExecuteScalar();
+                    if (count > 0)
+                    {
+                        MessageBox.Show("This movie is already in your Watch Later list.", "Duplicate Entry", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        return;
+                    }
+                }
+
+                // Insert the movie into the Watch Later list
+                string insertQuery = @"INSERT INTO UserWatchLater (UserID, MovieID, DateAdded) VALUES (@userId, @movieId, @dateAdded);";
+                using (SqlCommand insertCmd = new SqlCommand(insertQuery, conn))
+                {
+                    insertCmd.Parameters.AddWithValue("@userId", userId);
+                    insertCmd.Parameters.AddWithValue("@movieId", movie.MovieID);
+                    insertCmd.Parameters.AddWithValue("@dateAdded", DateTime.Now);
+
+                    try
+                    {
+                        insertCmd.ExecuteNonQuery();
+                        MessageBox.Show("Movie added to Watch Later successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (SqlException ex)
+                    {
+                        MessageBox.Show("An error occurred while adding the movie to Watch Later: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
     }
 }
