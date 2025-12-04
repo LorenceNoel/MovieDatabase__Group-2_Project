@@ -70,7 +70,8 @@ namespace Movie_Database_Application.Forms
 
         private void btnBrowse_Click(object sender, EventArgs e)
         {
-            using var form = new MainForm(username, isAdmin, userId);
+            // Open MainForm in browse-all mode so user can see all movies
+            using var form = new MainForm(username, isAdmin, userId, browseAll: true);
             form.ShowDialog();
             LoadUserMovies();
         }

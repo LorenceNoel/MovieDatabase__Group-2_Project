@@ -13,18 +13,36 @@ namespace Movie_Database_Application.Forms
         private readonly string currentUser;
         private readonly bool isAdmin;
         private readonly int userId;
+        private readonly bool browseAll;
         private readonly string connectionString = @"Server=Makku\SQLEXPRESS;Database=MovieDatabase;Trusted_Connection=True;";
 
-        public MainForm(string username, bool isAdminMode, int userId)
+        public MainForm(string username, bool isAdminMode, int userId, bool browseAll = false)
         {
             InitializeComponent();
 
             currentUser = username;
             isAdmin = isAdminMode;
             this.userId = userId;
+            this.browseAll = browseAll;
 
             InitializeListView();
             LoadFromDatabase();
+            ConfigurePermissions();
+        }
+
+        private void ConfigurePermissions()
+        {
+            // Non-admin users browsing the global list should not be able to add or delete
+            if (!isAdmin && browseAll)
+            {
+                btnAdd.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+            else
+            {
+                btnAdd.Enabled = true;
+                btnDelete.Enabled = true;
+            }
         }
 
         private void InitializeListView()
@@ -48,7 +66,8 @@ namespace Movie_Database_Application.Forms
             {
                 conn.Open();
 
-                string query = isAdmin
+
+                string query = (isAdmin || browseAll)
                     ? @"SELECT m.MovieID, m.Title, m.Genre, m.Year, m.Rating, m.Synopsis, m.Category, u.Username, m.UserID
                         FROM Movies m
                         JOIN Users u ON m.UserID = u.UserID"
@@ -59,7 +78,7 @@ namespace Movie_Database_Application.Forms
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    if (!isAdmin)
+                    if (!isAdmin && !browseAll)
                         cmd.Parameters.AddWithValue("@userId", userId);
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
