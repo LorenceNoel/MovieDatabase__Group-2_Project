@@ -48,3 +48,9 @@ C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Applica
 C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.pdb
 C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.genruntimeconfig.cache
 C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\ref\Movie Database Application.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\AxInterop.WMPLib.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie Database Application.csproj.ResolveComReference.cache
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\obj\Debug\net8.0-windows\Movie_Database_Application.WatchMovieForm.resources
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\Interop.WMPLib.dll
+C:\Users\MSI\Desktop\RAPID_MovieDatabase__Group-2_Project\Movie Database Application\bin\Debug\net8.0-windows\AxInterop.WMPLib.dll

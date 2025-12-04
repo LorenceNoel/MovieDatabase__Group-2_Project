@@ -112,5 +112,24 @@ namespace Movie_Database_Application.Forms
             }
         }
 
+        private void btnPlay_Click(object sender, EventArgs e)
+        {
+            if (lvUserMovies.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a movie to play.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (lvUserMovies.SelectedItems[0].Tag is not Movie movie)
+            {
+                MessageBox.Show("Invalid movie selection.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Open the WatchMovieForm
+            using var watchMovieForm = new WatchMovieForm(movie.Title);
+            watchMovieForm.ShowDialog();
+        }
+
     }
 }
