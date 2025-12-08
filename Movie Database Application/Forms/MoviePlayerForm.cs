@@ -102,7 +102,7 @@ namespace Movie_Database_Application.Forms
         private void BtnOpenFile_Click(object? sender, EventArgs e)
         {
             using var ofd = new OpenFileDialog();
-            ofd.Filter = "Video Files|*.mp4;*.mkv;*.avi;*.wmv;*.mov;*.mpg;*.mpeg|All Files|*.*";
+            ofd.Filter = "Video Files|*.mp4;*.mkv;*.avi;*.wmv;*.mov;*.mpg;*.mpeg|All Files|*.*";    //resricted to only file formats that support video
             ofd.Title = "Select a video file to play";
             if (ofd.ShowDialog(this) == DialogResult.OK)
             {

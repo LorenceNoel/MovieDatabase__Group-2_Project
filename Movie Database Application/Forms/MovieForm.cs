@@ -35,6 +35,7 @@ namespace Movie_Database_Application.Forms
 
         public Movie GetSavedMovie() => savedMovie;
 
+        //locates and finds the movie with the movieId and loads the saved movie details from the database
         private void LoadMovie(int movieId)
         {
             using (SqlConnection conn = new SqlConnection(connectionString))
@@ -68,6 +69,7 @@ namespace Movie_Database_Application.Forms
             }
         }
 
+        //saves movie as a new movie or updates movie if the movie already has an id
         private void btnSave_Click(object sender, EventArgs e)
         {
             string title = txtTitle.Text.Trim();
